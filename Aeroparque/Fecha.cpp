@@ -9,8 +9,30 @@ Fecha::Fecha(int dia, Dia _dia, Mes _mes, int anio)
 {
 }
 
+Fecha::Fecha(const Fecha& fecha)
+{
+	this->DiaNumero = fecha.DiaNumero;
+	this->DiaNombre = fecha.DiaNombre;
+	this->MesDelAnio = fecha.MesDelAnio;
+	this->Anio = fecha.Anio;
+}
+
+Fecha& Fecha::operator=(const Fecha& fecha)
+{
+	if (this != &fecha)
+	{
+		this->DiaNumero = fecha.DiaNumero;
+		this->DiaNombre = fecha.DiaNombre;
+		this->MesDelAnio = fecha.MesDelAnio;
+		this->Anio = fecha.Anio;
+	}
+	return *this;
+	// TODO: Insertar una instrucción "return" aquí
+}
+
 Fecha::~Fecha()
 {
+
 }
 
 int Fecha::getDiaNumero() const

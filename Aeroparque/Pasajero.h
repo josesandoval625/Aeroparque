@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<sstream>
 #include"Fecha.h"
+#include"ListaDeValijasDelPasajero.h"
 using namespace std;
 
 class Pasajero
@@ -17,18 +18,23 @@ private:
 	Fecha FechaDelPasajero;
 	string NumeroDeVuelo;
 	int NumeroDeAsiento;
-	//ListaDeValijas Valijas;
-	void AgregarEquipaje(/*ListaDeValijas*/);
-	int getDniPasajero();
-	string getNombreDelPasajero();
-	string getApellidoDelPasajero();
-	string getGeneroDelPasajero();
-	int getEdadDelPasajero();
-	void setDniPasajero();
-	void setNombreDelPasajero();
-	void setApellidoDelPasajero();
-	void setGeneroDelPasajero();
-	void setEdadDelPasajero();
+	ListaDeValijasDelPasajero *ListaValijas;
+public:
+	Pasajero(string,string,string,string,int,Fecha,string,int);
+	Pasajero(const Pasajero&);
+	Pasajero& operator=(const Pasajero&);
+	~Pasajero();
+	string getDniPasajero()const;
+	string getNombreDelPasajero()const;
+	string getApellidoDelPasajero()const;
+	string getGeneroDelPasajero()const;
+	int getEdadDelPasajero()const;
+	void setDniPasajero(const string& dniPasajero);
+	void setNombreDelPasajero(const string& nombreDelPasajero);
+	void setApellidoDelPasajero(const string& ApellidoDelPasajero);
+	void setGeneroDelPasajero(const string& GeneroDelPasajero);
+	void setEdadDelPasajero(const string& setEdadDelPasajero);
 	string to_string();
+	void AgregarEquipaje(/*ListaDeValijas*/);
 };
 
