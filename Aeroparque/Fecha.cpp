@@ -2,11 +2,22 @@
 
 Fecha::Fecha()
 {
+	this->DiaNumero =1;
+	this->DiaNombre = Dia::LIBRE;
+	this->MesDelAnio = Mes::LIBRE;
+	this->Anio = 1900;
+}
+
+Fecha::Fecha(int dia, Mes mes, int anio)
+	:DiaNumero(dia),MesDelAnio(mes),Anio(anio)
+{
+	DiaNombre = Dia::LIBRE;
 }
 
 Fecha::Fecha(int dia, Dia _dia, Mes _mes, int anio)
-	:DiaNumero(dia), DiaNombre(_dia), MesDelAnio(_mes), Anio(anio)
+	:DiaNumero(dia), MesDelAnio(_mes), Anio(anio)
 {
+	DiaNombre = Dia::LIBRE;
 }
 
 Fecha::Fecha(const Fecha& fecha)
@@ -58,6 +69,8 @@ string Fecha::getDiaNombre() const
 		return "SABADO";
 	case Dia::DOMINGO:
 		return "DOMINGO";
+	case Dia::LIBRE:
+		return "libre";
 	default:
 		return "ERROR";
 		break;
@@ -138,4 +151,9 @@ void Fecha::setAnio(const int& anio)
 string Fecha::getData()
 {
 	return "\n" + this->getDiaNombre() + " , " + to_string(this->DiaNumero) + " de " + this->getMesDelAnio() + " " + to_string(this->Anio) + "\n";
+}
+string Fecha::getData_dia_mes_anio()
+{
+	return to_string(this->DiaNumero) + " de " + this->getMesDelAnio() + " " + to_string(this->Anio) + "\n";
+
 }

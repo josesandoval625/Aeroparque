@@ -1,7 +1,7 @@
 #include "Pasajero.h"
 
-Pasajero::Pasajero(string dniDelPasajero, string nombreDelPasajero, string apellidoDelPasajero, string generoDelPasajero, int edadDelPasajero, Fecha fechaDelPasajero, string numeroDeVuelo, int numeroDeAsiento)
-	:DniDelPasajero(dniDelPasajero),NombreDelPasajero(nombreDelPasajero),ApellidoDelPasajero(apellidoDelPasajero),GeneroDelPasajero(generoDelPasajero),EdadDelPasajero(edadDelPasajero),FechaDelPasajero(fechaDelPasajero),NumeroDeVuelo(numeroDeVuelo),NumeroDeAsiento(numeroDeAsiento)
+Pasajero::Pasajero(string dniDelPasajero, string nombreDelPasajero, string apellidoDelPasajero, string generoDelPasajero, int edadDelPasajero, Fecha* fechaDeNacimiento)
+	:DniDelPasajero(dniDelPasajero),NombreDelPasajero(nombreDelPasajero),ApellidoDelPasajero(apellidoDelPasajero),GeneroDelPasajero(generoDelPasajero),EdadDelPasajero(edadDelPasajero), FechaDeNacimiento(fechaDeNacimiento)
 {
 	ListaValijas = NULL;
 }
@@ -13,9 +13,7 @@ Pasajero::Pasajero(const Pasajero& pasajero)
 	this->ApellidoDelPasajero = pasajero.ApellidoDelPasajero;
 	this->GeneroDelPasajero = pasajero.GeneroDelPasajero;
 	this->EdadDelPasajero = pasajero.EdadDelPasajero;
-	this->FechaDelPasajero = pasajero.FechaDelPasajero;
-	this->NumeroDeVuelo = pasajero.NumeroDeVuelo;
-	this->NumeroDeAsiento = pasajero.NumeroDeAsiento;
+	this->FechaDeNacimiento = pasajero.FechaDeNacimiento;
 	this->ListaValijas = pasajero.ListaValijas;
 }
 
@@ -28,9 +26,7 @@ Pasajero& Pasajero::operator=(const Pasajero& pasajero)
 		this->ApellidoDelPasajero = pasajero.ApellidoDelPasajero;
 		this->GeneroDelPasajero = pasajero.GeneroDelPasajero;
 		this->EdadDelPasajero = pasajero.EdadDelPasajero;
-		this->FechaDelPasajero = pasajero.FechaDelPasajero;
-		this->NumeroDeVuelo = pasajero.NumeroDeVuelo;
-		this->NumeroDeAsiento = pasajero.NumeroDeAsiento;
+		this->FechaDeNacimiento = pasajero.FechaDeNacimiento;
 		this->ListaValijas = pasajero.ListaValijas;
 	}
 	return *this;
@@ -74,5 +70,32 @@ void Pasajero::setDniPasajero(const string& dniPasajero)
 void Pasajero::setNombreDelPasajero(const string& nombreDelPasajero)
 {
 	this->NombreDelPasajero = nombreDelPasajero;
+}
+
+void Pasajero::setApellidoDelPasajero(const string& apellidoDelPasajero)
+{
+	this->ApellidoDelPasajero = apellidoDelPasajero;
+}
+
+void Pasajero::setGeneroDelPasajero(const string& generoDelPasajero)
+{
+	
+}
+
+void Pasajero::setEdadDelPasajero(const int& edadDelPasajero)
+{
+	this->EdadDelPasajero = edadDelPasajero;
+}
+
+string Pasajero::to_string()
+{
+	stringstream buffer;
+	buffer << "dni del pasajero............: " << DniDelPasajero << endl;
+	buffer << "nombre del pasajero.........: " << NombreDelPasajero << endl;
+	buffer << "apellido del pasajero.......: " << ApellidoDelPasajero << endl;
+	buffer << "genero del pasajero.........: " << GeneroDelPasajero << endl;
+	buffer << "edad del pasajero...........: " << EdadDelPasajero << endl;
+	buffer << "fecha de nacimiento.........: " << FechaDeNacimiento->getData_dia_mes_anio();
+	return buffer.str();
 }
 

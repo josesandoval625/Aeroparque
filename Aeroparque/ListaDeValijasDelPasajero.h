@@ -5,6 +5,7 @@ private:
 	int CantidadDeValijas;
 	float *PesoDeLasValijas;
 
+
 	
 };
 
